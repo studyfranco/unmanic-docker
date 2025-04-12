@@ -1,6 +1,13 @@
 # Unmanic Docker Container with Enhanced Capabilities
 
-[![GitHub Repository](https://img.shields.io/badge/GitHub-Repository-blue?logo=github)](https://github.com/studyfranco/unmanic-docker)
+<div align="center">
+  
+![Github stars](https://badgen.net/github/stars/studyfranco/unmanic-docker?icon=github&label=stars)
+![Github forks](https://badgen.net/github/forks/studyfranco/unmanic-docker?icon=github&label=forks)
+![Github issues](https://img.shields.io/github/issues/studyfranco/unmanic-docker)
+![Github last-commit](https://img.shields.io/github/last-commit/studyfranco/unmanic-docker)
+  
+</div>
 
 ## Overview
 
@@ -21,20 +28,32 @@ To run this container using Docker Compose with VAAPI hardware acceleration, use
 services:
   unmanic:
     container_name: unmanic
-    image: ghcr.io/studyfranco/unmanic-docker:latest
+    hostname: unmanic
+    image: ghcr.io/studyfranco/unmanic-docker:master
     ports:
       - 8888:8888
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Europe/Paris
+      - TZ=Europe/Berlin
     volumes:
+      - /etc/localtime:/etc/localtime:ro
       - /path/to/config:/config
       - /path/to/library:/library
-      - /path/to/cache:/tmp/unmanic
+    tmpfs:
+      - "/run:exec,mode=777"
+      - "/tmp:exec,mode=777"
+      - "/tmp/dumps:exec,mode=777"
+      - "/var/tmp:exec,mode=777"
+      - "/tmp/unmanic:exec,mode=777"
+    restart: "unless-stopped"
     devices:
       - /dev/dri:/dev/dri # VAAPI hardware acceleration
-    restart: unless-stopped
+    group_add:
+      - video
+      - '44'
+      - '100' # Render group
+    cpu_shares: 180
 ```
 
 **Notes:**
