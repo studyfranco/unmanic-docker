@@ -5,7 +5,9 @@ LABEL maintainer="studyfranco@gmail.com"
 RUN set -x \
     && apt update \
     && apt dist-upgrade -y \
-    && DEBIAN_FRONTEND=noninteractive apt-get install -y ffmpegthumbs jq mkvtoolnix ffmpeg mediainfo handbrake-cli va-driver-all mesa-utils mesa-va-drivers mesa-vulkan-drivers mesa-opencl-icd libgl1-mesa-dri libglx-mesa0 vulkan-tools rsync zip vainfo intel-media-va-driver-non-free firmware-intel-graphics firmware-intel-misc intel-opencl-icd hwinfo openssl sqlite3 jq nodejs libimage-exiftool-perl grc gcc python3 python3-dev python3-pip python3-setuptools python3-full python3-pymediainfo python3-sqlalchemy python3-sqlalchemy-ext python3-psycopg2 adduser --no-install-recommends --fix-missing \
+    && echo "deb https://deb.debian.org/debian/ bullseye main contrib non-free" >> /etc/apt/sources.list.d/bullseye.list \
+    && apt update \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y ffmpegthumbs jq mkvtoolnix ffmpeg mediainfo handbrake-cli va-driver-all mesa-utils mesa-va-drivers mesa-vulkan-drivers mesa-opencl-icd libgl1-mesa-dri libglx-mesa0 vulkan-tools rsync zip vainfo intel-media-va-driver-non-free firmware-intel-graphics firmware-intel-misc intel-opencl-icd hwinfo openssl sqlite3 jq nodejs libimage-exiftool-perl grc gcc python3 python3-dev python3-pip python3-setuptools python3-full python3-pymediainfo python3-sqlalchemy python3-sqlalchemy-ext python3-psycopg2 python3-numpy python3-scipy python3-matplotlib python3-onnxruntime python3-resampy libchromaprint-tools=1.5.0-2 adduser --no-install-recommends --fix-missing \
     && apt autopurge -yy \
     && apt clean autoclean -y \
     && rm -rf /var/cache/* /var/lib/apt/lists/* /var/log/* /var/tmp/* /tmp/*
