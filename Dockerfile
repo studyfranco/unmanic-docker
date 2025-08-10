@@ -29,13 +29,13 @@ RUN set -x \
 
 RUN set -x \
     && apt update \
-    && DEBIAN_FRONTEND=noninteractive apt-get install -y grc gcc python3 python3-dev python3-pip python3-setuptools python3-full python3-pymediainfo python3-sqlalchemy python3-sqlalchemy-ext python3-psycopg python3-numpy python3-scipy python3-matplotlib python3-onnxruntime python3-resampy libchromaprint-tools=1.5.0-2 --no-install-recommends --fix-missing \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y grc gcc python3 python3-dev python3-pip python3-setuptools python3-full python3-pymediainfo python3-sqlalchemy python3-sqlalchemy-ext python3-psycopg python3-numpy python3-scipy python3-matplotlib python3-onnxruntime python3-resampy libchromaprint-tools=1.5.0-2 python3-psutil --no-install-recommends --fix-missing \
     && apt autopurge -yy \
     && apt clean autoclean -y \
     && touch /var/cache/a && touch /var/log/a && touch /var/tmp/a && touch /tmp/a \
     && rm -rf /var/cache/* /var/lib/apt/lists/* /var/log/* /var/tmp/* /tmp/*
 
-RUN python3 -m pip install --break-system-packages unmanic pymediainfo SQLAlchemy psycopg matplotlib onnxruntime resampy \
+RUN python3 -m pip install --break-system-packages unmanic pymediainfo SQLAlchemy psycopg matplotlib onnxruntime resampy iso639-lang psutil \
     && touch /var/cache/a && touch /var/log/a && touch /var/tmp/a && touch /tmp/a \
     && rm -rf /var/cache/* /var/log/* /var/tmp/* /tmp/* /root/.cache
 
@@ -51,4 +51,5 @@ EXPOSE 8888/tcp
 
 COPY --chmod=0755 run.sh /run.sh
 COPY --chmod=0755 entrypoint.sh /entrypoint.sh
+
 CMD ["/entrypoint.sh"]
