@@ -35,7 +35,7 @@ RUN set -x \
     && touch /var/cache/a && touch /var/log/a && touch /var/tmp/a && touch /tmp/a \
     && rm -rf /var/cache/* /var/lib/apt/lists/* /var/log/* /var/tmp/* /tmp/*
 
-RUN python3 -m pip install --break-system-packages unmanic pymediainfo SQLAlchemy psycopg matplotlib onnxruntime resampy iso639-lang psutil \
+RUN python3 -m pip install --break-system-packages --ignore-installed unmanic pymediainfo SQLAlchemy psycopg matplotlib onnxruntime resampy iso639-lang psutil \
     && touch /var/cache/a && touch /var/log/a && touch /var/tmp/a && touch /tmp/a \
     && rm -rf /var/cache/* /var/log/* /var/tmp/* /tmp/* /root/.cache
 
