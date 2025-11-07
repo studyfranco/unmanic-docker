@@ -14,6 +14,8 @@ for base in /usr/local/lib /usr/lib; do
   fi
 done
 
+FILE="/usr/local/lib/python3.13/dist-packages/unmanic/libs/session.py"
+
 [ -n "${FILE:-}" ] || { echo "unmanic/libs/session.py introuvable sous /usr/local|/usr."; exit 1; }
 echo "Cible: $FILE"
 
