@@ -7,7 +7,7 @@ chown -R "unmanic":"unmanic" /config
 FILE=""
 
 for base in /usr/local/lib /usr/lib; do
-  PY_DIR="$(ls -d "$base"/python[0-9].[0-9] 2>/dev/null | grep -E 'python[0-9]+\.[0-9]+' | sort -V | tail -n1)"
+  PY_DIR="$(ls -d "$base" 2>/dev/null | grep -E 'python[0-9]+\.[0-9]+' | sort -V | tail -n1)"
   if [ -n "${PY_DIR:-}" ] && [ -f "$PY_DIR/dist-packages/unmanic/libs/session.py" ]; then
     FILE="$PY_DIR/dist-packages/unmanic/libs/session.py"
     break
