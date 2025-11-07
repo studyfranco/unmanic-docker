@@ -75,7 +75,7 @@ See the [LICENSE](LICENSE) file for more details.
 
 ## Last update
 
-2025/10/05
+2025/11/07
 
 
 
