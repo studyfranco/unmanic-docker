@@ -48,4 +48,6 @@ SED
 
 sed -i -E -f /tmp/add_return_after_docstring.sed "$FILE"
 
+chown -R unmanic:unmanic /tmp/unmanic
+
 exec gosu "unmanic" "/run.sh" "$@"
