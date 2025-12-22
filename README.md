@@ -73,9 +73,8 @@ Big thanks to:
 This project is licensed under the **GNU Affero General Public License v3.0**.  
 See the [LICENSE](LICENSE) file for more details.
 
-## Last update
-
-2025/11/07
+## Last Update
+2025-12-20
 
 
 
