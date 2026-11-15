@@ -7,7 +7,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN set -eux \
     && apt-get update \
     && apt-get dist-upgrade -y \
-    && apt-get install -y mkvtoolnix ffmpeg mediainfo handbrake-cli rsync zip hwinfo openssl sqlite3 jq nodejs libimage-exiftool-perl adduser --no-install-recommends \
+    && apt-get install -y gosu mkvtoolnix ffmpeg mediainfo handbrake-cli rsync zip hwinfo openssl sqlite3 jq nodejs libimage-exiftool-perl adduser --no-install-recommends \
     && apt-get autoremove --purge -y \
     && apt-get clean \
     && rm -rf /var/cache/* /var/lib/apt/lists/* /var/log/* /var/tmp/* /tmp/*
